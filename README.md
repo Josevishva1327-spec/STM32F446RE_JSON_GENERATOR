@@ -46,7 +46,7 @@ JsonStatus serialize_gateway_payload(
 
  Function Description:
 
-This function converts a populated `GatewayPayload` structure into a JSON string.
+ This function converts a populated `GatewayPayload` structure into a JSON string.
 
  Parameters:
 
@@ -62,9 +62,9 @@ This function converts a populated `GatewayPayload` structure into a JSON string
  JSON_ERR_INVALID_INPUT – Invalid input parameters
 
 
-Example JSON Output
+ Example JSON Output
 
-Below is an example of the JSON produced by the system:
+ Below is an example of the JSON produced by the system:
 
 
 [{
@@ -90,13 +90,21 @@ Below is an example of the JSON produced by the system:
   }
 }]
 
- Design Decisions and Assumptions
+ Design Decisions and Assumptions :
 
  No external JSON libraries were used to keep the solution lightweight and portable.
  Fixed-size structures and buffers were used to ensure predictable memory usage.
  snprintf() was used for safe string formatting and buffer overflow protection.
  The serializer is designed to be transport-independent; UART is used only for demonstration.
-The data model assumes a maximum number of devices and data points, which can be adjusted if needed.
+ The data model assumes a maximum number of devices and data points, which can be adjusted if needed.
+
+Notes on Possible Extensions
+Support for additional devices and measurement types
+Periodic JSON transmission using timers or RTOS tasks
+Integration with communication protocols such as MQTT or HTTP
+Adding CRC or checksum for data integrity
+Unit testing on host systems for serializer validation
+  
 
 
 
